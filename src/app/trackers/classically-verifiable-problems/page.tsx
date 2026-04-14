@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { GithubIcon } from '@/icons';
 import type { Metadata } from 'next';
-import circuitModels from '../../../../data/classically-verifiable-problems/circuit-models.json' assert { type: 'json' };
-import submissions from '../../../../data/classically-verifiable-problems/submissions.json' assert { type: 'json' };
+import circuitModels from '../../../../data/classically-verifiable-problems/circuit-models.json' with { type: 'json' };
+import submissions from '../../../../data/classically-verifiable-problems/submissions.json' with { type: 'json' };
 import { SubmissionsTable } from './SubmissionsTable';
 
 export const metadata: Metadata = {
