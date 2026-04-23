@@ -24,8 +24,8 @@
   "random_graph_sampling": {
     "instances": [
       {
-        "id": "random_graph_sampling_nq70_depth70_checks27_basis_THTH",
-        "path": "nq70_depth70_checks27_basis_THTH.qasm",
+        "id": "random_graph_sampling_nq70_depth70_checks27_basis_fstate",
+        "path": "nq70_depth70_checks27_basis_fstate.qasm",
         "qubits": 70,
         "gates": 2415
       }
