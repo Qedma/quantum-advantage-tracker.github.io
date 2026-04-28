@@ -24,25 +24,29 @@ As this corresponds exactly to the bond dimension, the contraction cost of tenso
 
 To maximize the entanglement in our graph states, we use an ansatz of an odd/even layer of CZ gates (brickwork layout) followed by a layer of random $SX$ or $S;\ SX$ rotations on each qubit. We numerically verify that this is close to saturating the entanglement bound and report the Schmidt rank as the minimum over 100 million random bipartitions.
 
-### `Stabilizer Rank`
+### `Nonstabilizerness`
 
-Alternatively, stabilizer rank decompositions convert magic states into superpositions of stabilizer states, which can be efficiently simulated. The complexity of these algorithms therefore scales with the minimum number of stabilizers necessary to represent the state, i. e. the stabilizer rank. For our circuits, we employ rotations to [maximize the stabilizer rank](https://arxiv.org/pdf/1808.00128), which yields
+Alternatively, stabilizer rank algorithms decompose magic states into superpositions of stabilizer states, which can be efficiently simulated.
 
-$$stabilizer\ rank \leq 2^{0.3424n}$$
+$$\ket{\psi} = \sum_i c_i \ket{\phi_i}$$
 
-So, as claimed, the stabilizer rank increases exponentially with the system size.
-
-For circuits consisting only of Clifford and T gates, the [best known upper bound](https://arxiv.org/pdf/2106.07740v1) is given by
+The complexity therefore scales with the minimum number of states used in this decomposition, i. e. the stabilizer rank. For circuits consisting of only Clifford and T gates, the [best known upper bound](https://arxiv.org/pdf/2106.07740v1) is given by
 
 $$stabilizer\ rank \leq 2^{0.3963 \cdot (T\ count)}$$
 
+[Brayvi et. al](https://arxiv.org/pdf/1808.00128) also describe a method of quantifying the nonstabilizerness with the stabilizer extent, or the minimum $\| c \|^2$ over all stabilizer decompositions, which more naturally bounds the complexity of approximate error simuations. As described in their work, we use non-Clifford rotations to prepare a "face-state" which has maximal stabilizer extent:
+
+$$stabilizer\ extent = 2^{0.3424 \cdot n}$$
+
+So, as claimed, the nonstabilizerness increases exponentially with the system size.
+
 We also make note of [Clifford Augmented Matrix Product State (CAMPS) simulators](https://arxiv.org/pdf/2412.17209), which combine tensor networks with tableau simulators. These algorithms reduce the bond dimension necessary to represent the state by propagating non-Clifford gates to the front of the circuit, using a tableau for the entangled Clifford bulk and a smaller bond dimension MPS for the non-Clifford layer. After the first $n$ magic gates however, the upper bound on the bond dimension necessary for the MPS increases exponentially, as well as the maximum bond dimension necessary to sample bitstring probabilities.
 
-To the best of our knowledge, then, the large Schmidt and Stabilizer rank of our rotated graph states will be adversarial for exact classical simulations.
+To the best of our knowledge, then, the large Schmidt and stabilizer extent of our rotated graph states will be adversarial for exact classical simulations.
 
 ## `Verifiability`
 
-For sampling-based experiments, it suffices to show that samples can be drawn from a quantum computer with greater fidelity than through classical means. We claim that, with random graph state sampling, we have a more direct measure of the state fidelity that, relative to prior RCS-style experiments, also requires less conditions on the noise in our circuit.
+For sampling-based experiments, it suffices to show that samples can be drawn from a quantum computer with greater fidelity than through classical means. We claim that, with random graph state sampling, we have a more direct measure of the state fidelity that, relative to prior RCS-style experiments, requires fewer assumptions about the noise in our circuit.
 
 For comparison, RCS uses the fact that the outcome probabilties of Haar-random states is described by the Porter-Thomas distribution, a distinctly non-classical model. The closeness to of the samples to the Porter-Thomas is quantified with the linear cross-entropy benchmarking (XEB) score, which compares the output distribution (in the Z-basis) of each sampled output $x$ to its quantum probability
 
@@ -68,10 +72,10 @@ $$F \approx \frac{1}{M} \sum_k^M \braket{P_k}_{\rho} \braket{P_k}_{\sigma} $$
 
 For stabilizer states, whose expectation values can be bounded, this requires only a constant shot overhead. Using the $O(1/M)$ scaling in uncertainty, we choose enough random stabilizers to bound the fidelity above 1% with 95% confidence.
 
-For non-stabilizer states, expecation values can become arbitrarily small, which requries a commensurately large shot overhead. We argue, however, that the fidelity of the graph state is equivalent whether measured in a stabilizer or non-stabilizer basis:
+For non-stabilizer states, expectation values can become arbitrarily small, which requires a commensurately large shot overhead. We argue, however, that the fidelity of the graph state is equivalent whether measured in a stabilizer or non-stabilizer basis:
 
 - The graph state and rotated state share all the same gates, the only exception being the angle of the final Z rotations, which toggle between the stabilizer and non-stabilizer bases.
-- On IBM's devices, Z gates are [virtually implemented](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.96.022330) and are noiseless, implying that the graph state fidelity is representative of the rotated state.
+- On IBM's devices, Z gates are [virtually implemented](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.96.022330) as framechanges, hence are noiseless and cannot add incoherent error.
 - We employ Pauli twirling, or randomized compiling, on the graph state preparation circuit. With the assumption of independent error on the single qubit gates, this is enough to ensure that the [fidelity of the rotated graph state](https://arxiv.org/pdf/2503.05943) is equal (up to first order) to the average graph state fidelity.
 
 Provided that classical simulations fail to efficiently sample from our state, we can demonstrate quantum advantage by showing the fidelity of the rotated graph state is bounded away from zero.
