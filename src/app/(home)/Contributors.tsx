@@ -1,6 +1,6 @@
-import submissionsCVP from '../../../data/classically-verifiable-problems/submissions.json' assert { type: 'json' };
-import submissionsOE from '../../../data/observable-estimations/submissions.json' assert { type: 'json' };
-import submissionsVP from '../../../data/variational-problems/submissions.json' assert { type: 'json' };
+import submissionsCVP from '../../../data/classically-verifiable-problems/submissions.json' with { type: 'json' };
+import submissionsOE from '../../../data/observable-estimations/submissions.json' with { type: 'json' };
+import submissionsVP from '../../../data/variational-problems/submissions.json' with { type: 'json' };
 
 const submissions = [...submissionsCVP, ...submissionsOE, ...submissionsVP];
 

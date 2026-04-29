@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { GithubIcon } from '@/icons';
 import type { Metadata } from 'next';
-import hamiltonians from '../../../../data/variational-problems/hamiltonians.json' assert { type: 'json' };
-import submissions from '../../../../data/variational-problems/submissions.json' assert { type: 'json' };
+import hamiltonians from '../../../../data/variational-problems/hamiltonians.json' with { type: 'json' };
+import submissions from '../../../../data/variational-problems/submissions.json' with { type: 'json' };
 import { SubmissionsTable } from './SubmissionsTable';
 
 export const metadata: Metadata = {
