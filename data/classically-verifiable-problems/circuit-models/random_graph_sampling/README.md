@@ -77,7 +77,7 @@ Our circuits are mapped onto a one dimensional chain with ancillas attached to e
 
 <p align="center">
   <img width="594" height="483" alt="image" src="https://github.com/user-attachments/assets/1624d6ee-c943-4fb5-801a-9ad1fb3ac94c" />
-  <em>Figure 4. Physical layout for the 70 X 70 circuit (with 27 ancilla qubits) on IBM Boston, a Heron R3 device with heavy-hex architecture. The logical qubits (green) are arranged on a 1D chain with dangling ancilla qubits (red).</em>
+  <em>Figure 3. Physical layout for the 70 X 70 circuit (with 27 ancilla qubits) on IBM Boston, a Heron R3 device with heavy-hex architecture. The logical qubits (green) are arranged on a 1D chain with dangling ancilla qubits (red).</em>
 </p>
 
 ### `Measuring Fidelity`
@@ -90,7 +90,7 @@ For stabilizer states, whose expectation values can be bounded, this requires on
 
 <p align="center">
   <img width="1211" height="611" alt="image" src="https://github.com/user-attachments/assets/5efc5cf6-25c8-42ec-81d7-80417e059a06" />
-  <em>Figure 3. Fidelity and post-selection rate for the 70 X 70 circuit on IBM Boston. Using direct fidelity estimation, we draw 80 random stabilizers and measure their expectation values or fidelities. After post-selection, the state fidelity is 0.37, bounded above 0.092 with 95% confidence. </em>
+  <em>Figure 4. Fidelity and post-selection rate for the 70 X 70 circuit on IBM Boston. Using direct fidelity estimation, we draw 80 random stabilizers and measure their expectation values or fidelities. After post-selection, the state fidelity is 0.37, bounded above 0.092 with 95% confidence. </em>
 </p>
 
 For non-stabilizer states, expectation values can become arbitrarily small, which requires a commensurately large shot overhead. We argue, however, that the fidelity of the graph state is equivalent whether measured in a stabilizer or non-stabilizer basis:
