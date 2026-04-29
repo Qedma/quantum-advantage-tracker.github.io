@@ -4,7 +4,7 @@
 
 - `nq70_depth70_checks27_basis_fstate_checks.qasm`: This includes the ancillas and spacetime Pauli checks for the above circuit.
 
-- `samples_nq70_depth70_checks27_basis_fstate.npy`: 1726 samples for the above circuit.
+- `samples_nq70_depth70_checks27_basis_fstate.npy`: 1726 samples for the above circuit, measured in the non-Clifford basis.
 
 ## A. Computational Complexity
 
