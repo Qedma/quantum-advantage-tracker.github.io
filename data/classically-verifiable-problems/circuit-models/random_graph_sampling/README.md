@@ -1,6 +1,6 @@
 # Circuit instance description:
 
-`nq70_depth70_checks27_basis_fstate.qasm`: This prepares a random graph state on a 70 X 70 circuit, arranged on a 1D lattice (LNN) and equipped with 27 ancillas. A layer of non-Clifford basis rotations is applied at the end, which is designed to maximize the stabilizer rank. The best known Schmidt rank is $2^{30}$ and the best known stabilizer extent is $2^{23.9}$. After post-selection, 0.10% of the shots remain, and the state fidelity is $0.37 \pm 0.02$ ($ \geq 0.092$ with 95% confidence).
+`nq70_depth70_checks27_basis_fstate.qasm`: This prepares a random graph state on a 70 X 70 circuit, arranged on a 1D lattice (LNN) and equipped with 27 ancillas. A layer of non-Clifford basis rotations is applied at the end, which is designed to maximize the stabilizer rank. The best known Schmidt rank is $2^{30}$ and the best known stabilizer extent is $2^{23.9}$. After post-selection, 0.10% of the shots remain, and the state fidelity is $0.37 \pm 0.02$ (bounded above 0.092 with 95% confidence).
 
 - `nq70_depth70_checks27_basis_fstate_checks.qasm`: This includes the ancillas and spacetime Pauli checks for the above circuit.
 
