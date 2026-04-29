@@ -75,6 +75,11 @@ To avoid the problem of vanishing fidelities with large circuits, we use the [sp
 
 Our circuits are mapped onto a one dimensional chain with ancillas attached to exactly one data qubit. On IBM's Heron devices, which have the heavy-hex architecture, it is likely that every other qubit will have degree 3. This dense placement of ancillas enables effective error detection, and guarantees that the number of ancillas can scale with the size of the circuit.
 
+<p align="center">
+  <img width="594" height="483" alt="image" src="https://github.com/user-attachments/assets/1624d6ee-c943-4fb5-801a-9ad1fb3ac94c" />
+  <em>Figure 4. Physical layout for the 70 X 70 circuit (with 27 ancilla qubits) on IBM Boston, a Heron R3 device with heavy-hex architecture. The logical qubits (green) are arranged on a 1D chain with dangling ancilla qubits (red).</em>
+</p>
+
 ### `Measuring Fidelity`
 
 As the graph states can be prepared with high fidelity with error detection, it is efficient to use [direct fidelity estimation](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.106.230501). The fidelity for target state $\sigma$ and noisy output state $\rho$ can be approximated by randomly sampling the expectation values of $M$ random Paulis $P$:
