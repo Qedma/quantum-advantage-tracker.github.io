@@ -4,35 +4,32 @@
 
 - `nq70_depth70_checks27_basis_fstate_checks.qasm`: This includes the ancillas and spacetime Pauli checks for the above circuit.
 
-- `samples_nq70_depth70_checks27_basis_fstate.npy`: 3376 samples for the above circuit.
-
+- `samples_nq70_depth70_checks27_basis_fstate.npy`: 1726 samples for the above circuit.
 
 ## A. Computational Complexity
 
 Our work, like [random circuit sampling (RCS)](https://www.nature.com/articles/s41586-019-1666-5), relies on the asymptotic hardness of classical algorithms for random quantum state sampling. However, instead of Haar-random states, we focus on random graph states which permit both error detection and verifiability in the experiment.
 
-It [has been shown](https://arxiv.org/pdf/2412.07058) that sampling random *regular* graph states in a random product basis is average-case #P-hard. This implies that this task is hard for *any* classical algorithm, unless there is a collapse in the polynomial hierarchy. The problem can also be reduced to the simulation of measurement-based quantum computing (MBQC). 
+It [has been shown](https://arxiv.org/pdf/2412.07058) that sampling random _regular_ graph states in a random product basis is average-case #P-hard. This implies that this task is hard for _any_ classical algorithm, unless there is a collapse in the polynomial hierarchy. The problem can also be reduced to the simulation of measurement-based quantum computing (MBQC).
 
 In this work we prepare random graph states and conjecture that they are also #P-hard to sample from.
 
 ## B. Hardness of classical simulation
 
-For the specific problem size that we ran, we quantify hardness of simulation through two quantities: entanglement and magic. The former leads to the difficulty of tensor network-based methods, and the latter the difficulty of Clifford-based methods.
+For the specific problem size that we ran, we quantify the hardness of simulation through two quantities: entanglement and magic. The former leads to the difficulty of tensor network-based methods, and the latter the difficulty of Clifford-based methods.
 In random graph state sampling, both of these properties scale with the system size, implying that classical simulations using known methods will become effectively intractable past some finite circuit size.
 
 ### `Quantifying Entanglement`
 
-We quantify the entanglement of the graph state by estimating the Schmidt rank, the $GF(2)$ rank of its adjacency matrix, across random bipartitions. For an $N$-qubit graph state, the Schmidt rank is upper bounded by $2^{N/2}$. 
+We quantify the entanglement of the graph state by estimating the Schmidt rank, the $GF(2)$ rank of its adjacency matrix, across random bipartitions. For an $N$-qubit graph state, the Schmidt rank is upper bounded by $2^{N/2}$. As this corresponds exactly to the bond dimension, the contraction cost of tensor network simulations will scale exponentially with this quantity.
 
-As this corresponds exactly to the bond dimension, the contraction cost of tensor network simulations will scale exponentially with this quantity.
-
-To maximize the entanglement in our graph state, we use an ansatz of repeating layers of odd/even CZ gates (brickwork layout), followed by random $\sqrt{X}$ or $S;\ \sqrt{X}$ rotations on each qubit. We do this until reaching a CZ-depth of $N$. It is known that this depth is enough to prepare *any* graph state on an LNN architecture (to appear).
+To maximize the entanglement in our graph state, we use an ansatz of repeating layers of odd/even CZ gates (brickwork layout), followed by random $\sqrt{X}$ or $S;\ \sqrt{X}$ rotations on each qubit. We do this until reaching a CZ-depth of $N$. It is known that this depth is enough to prepare _any_ graph state on an LNN architecture (to appear).
 
 By taking the minimum over 100 million random bipartitions, we numerically verify that our circuit nearly saturates the entanglement upper bound with a Schmidt rank of $2^{30}$.
 
-### `Quantifying non-stabilizerness`
+### `Quantifying Non-stabilizerness`
 
-Alternatively, stabilizer rank algorithms can be used which are oblivious to the amount of entanglement, but instead scale exponentially with the amount of magic (non-stabilizerness) in the circuit. These methods decompose quantum states into a sum of stabilizers which can be efficiently simulated. 
+Alternatively, stabilizer rank algorithms can be used, which are oblivious to the amount of entanglement, but scale exponentially with the amount of magic (non-stabilizerness) in the circuit. These methods decompose quantum states into a sum of stabilizers which can be efficiently simulated.
 
 The complexity therefore scales with the minimum number of states used in this decomposition, i. e. the stabilizer rank. For circuits consisting of only Clifford and T gates, the [best known upper bound](https://arxiv.org/pdf/2106.07740v1) is given by
 
@@ -64,7 +61,7 @@ A key detail is that XEB requires classical simulations for the outcome probabil
 
 ### `Error detection`
 
-To avoid the problem of vanishing fidelities with large circuits, we use the [spacetime error detection protocol](https://arxiv.org/pdf/2504.15725) and mitigate noise in our samples. As the graph state is prepared with Clifford gates, it is possible to augment the circuit with ancilla qubits and insert spacetime Pauli checks on their support at various depths. While these Pauli checks collectively stabilize the circuit, errors occuring in the circuit will not generally commute with these checks, manifesting as a "syndrome" error on the ancillas. These errored shots can be detected and post-selected out which, as illustrated in the reference above, can result in order of magnitude improvements over bare state fidelity, all with a significantly lower sampling overhead than PEC.
+To avoid the problem of vanishing fidelities with large circuits, we use the [spacetime error detection protocol](https://arxiv.org/pdf/2504.15725) and mitigate noise in our samples. As the graph state is prepared with Clifford gates, it is possible to augment the circuit with ancilla qubits and insert spacetime Pauli checks on their support at various depths. While these Pauli checks collectively stabilize the circuit, errors will not generally commute with these checks, manifesting as a "syndrome" error on the ancillas. These errored shots can be detected and post-selected out which, as illustrated in the reference above, can result in order of magnitude improvements over bare state fidelity, all with a significantly lower sampling overhead than PEC.
 
 Our circuits are mapped onto a one dimensional chain with ancillas attached to exactly one data qubit. On IBM's Heron devices, which have the heavy-hex architecture, it is likely that every other qubit will have degree 3. This dense placement of ancillas enables effective error detection, and guarantees that the number of ancillas can scale with the size of the circuit.
 
