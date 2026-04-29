@@ -56,11 +56,11 @@ jobs:
           echo "Selected submissions path: $SUBMISSIONS_PATH"
 
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Parse issue body
         id: issue_form_parser
-        uses: issue-ops/parser@v4
+        uses: issue-ops/parser@v5
         with:
           body: ${{ github.event.issue.body }}
           issue-form-template: ${{ steps.path_selector.outputs.selected_issue_template }}
@@ -85,7 +85,7 @@ jobs:
 
       - name: Create pull request
         id: create_pull_request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: 'Add new submission from issue #${{ github.event.issue.number }}'
           title: 'Add new submission from issue #${{ github.event.issue.number }}'
