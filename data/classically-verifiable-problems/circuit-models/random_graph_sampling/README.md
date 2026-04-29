@@ -79,7 +79,7 @@ Our circuits are mapped onto a one dimensional chain with ancillas attached to e
 
 As the graph states can be prepared with high fidelity with error detection, it is efficient to use [direct fidelity estimation](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.106.230501). The fidelity for target state $\sigma$ and noisy output state $\rho$ can be approximated by randomly sampling the expectation values of $M$ random Paulis $P$:
 
-$$F \approx \frac{1}{M} \sum_k^M \braket{P_k}_{\rho} \braket{P_k}_{\sigma} $$
+$$F \approx \frac{1}{M} \sum_k^M \frac{\braket{P_k}_{\rho}}{\braket{P_k}_{\sigma}} $$
 
 For stabilizer states, whose expectation values can be bounded, this requires only a constant shot overhead. Given the $O(1/M)$ scaling in uncertainty, we choose enough random stabilizers to bound the fidelity above 1% with 95% confidence.
 
