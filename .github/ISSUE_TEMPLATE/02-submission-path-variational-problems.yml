@@ -22,6 +22,21 @@ body:
       required: true
 
   - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: |
+        - **Baseline Benchmarks**: These represent problems of interest, at scale, where the state-of-the-art is clearly classical, tracked for progress and calibration.
+        - **Active Candidates**: Problems that have met a higher bar of evidence suggesting quantum methods are credible contenders for advantage. To be clear, problems in this category are not necessarily provable examples of quantum advantage. These are merely problems where one may not yet have reliable classical benchmarks
+        - **Superseded Candidates**: Previously active candidates for which classical methods have caught up or exceeded the quantum approach.
+      options:
+        - Baseline
+        - Active
+        - Superseded
+    validations:
+      required: true
+
+  - type: dropdown
     id: hamiltonian
     attributes:
       label: Hamiltonian
