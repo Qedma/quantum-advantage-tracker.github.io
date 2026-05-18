@@ -51,6 +51,7 @@ body:
         - peaked_circuit_heavy_hex_49x5072
         - peaked_circuit_P9_Hqap_56x1917
         - random_graph_sampling_nq70_depth70_checks27_basis_fstate
+        - doped_random_graph_sampling_nq70_depth70_checks27
     validations:
       required: true
 
