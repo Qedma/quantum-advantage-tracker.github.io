@@ -53,7 +53,7 @@ So, as claimed, the nonstabilizerness increases exponentially with the system si
 (Recall that for random graph state sampling, we instead characterized the nonstabilizerness with the [stabilizer extent](https://arxiv.org/pdf/1808.00128), the minimum $\lVert c \rVert^2$ over all stabilizer decompositions. We do not use this metric here as the stabilizer rank lower bounds this quantity for approximate error simulations.)
 
 <p align="center">
-  <img width="570" height="476" alt="image" src="https://github.com/user-attachments/assets/b94a6fe8-a237-468a-ab67-14fbb9057279" />
+  <img width="570" height="476" alt="image" src="https://github.com/user-attachments/assets/1dea42a2-5c21-4ae4-b0d4-72f78d859e55" />
 
 <em>Figure 2. Extended stabilizer simulation timing in quizx for 70 X 70 circuits with various T-counts (maximum 85). Linear extrapolation from a logarithmic plot of the data (R<sup>2</sup> > 0.98) yields a predicted time of 10<sup>42</sup> seconds to find the probability of one bitstring.</em>
 
@@ -125,30 +125,30 @@ To build confidence in this experimentally, we measure the state fidelity (or a 
 Provided that classical simulations fail to faithfully sample from our state, we can certify quantum advantage by showing that the fidelity of the rotated graph state is bounded above zero.
 
 <p align="center">
-  <img width="1211" height="611" alt="image" src="https://github.com/user-attachments/assets/5efc5cf6-25c8-42ec-81d7-80417e059a06" />
+  <img width="753" height="530" alt="image" src="https://github.com/user-attachments/assets/267224d6-2bdb-4a31-8a54-6fcbeff619ac" />
   
   <em>Figure 4. Fidelity for the 70 X 70 circuit on IBM Boston at various T-counts. For T-count=0,5 we utilize direct fidelity estimation with 120 randomly drawn Paulis, and for T-count=70,80 we measure the linear cross entropy of the resultant samples. After rescaling for readout error, we note no negative trend in fidelity is observed as T-count increases. </em>
 </p>
 
 ### `Verifiability with Post-Selection Rate`
 
-The spacetime Pauli checks, in addition to allowing for post-selection of errors and improvements in fidelity, characterizes the rate of logical faults occurring in the circuit. We reason that the rate of logical faults corresponds to the fidelity of the circuit.
+The spacetime Pauli checks, in addition to allowing for post-selection of errors and improvements in fidelity, can be used to characterize the rate of logical faults occurring in the circuit. We reason that the rate of logical faults corresponds to the fidelity of the circuit.
 
 For simplicity, consider the set of incoherent Pauli faults. T gates do not disturb the spacetime Pauli checks, implying that the set of logical faults that are either accepted/rejected during post-selection is identical in the undoped and doped cases, and are perfect, implying that the probability of a fault occuring is independent of the number of T gates.
 
 <p align="center">
-  <img width="1211" height="611" alt="image" src="https://github.com/user-attachments/assets/5efc5cf6-25c8-42ec-81d7-80417e059a06" />
+  <img width="1427" height="497" alt="image" src="https://github.com/user-attachments/assets/b7660919-32c2-48cb-aef2-965339be849b" />
   
   <em>Figure 5. Post-selection rate for the 70 X 70 circuit on IBM Boston shows no dependence on T-count across the measured values. </em>
 </p>
 
-Conditioning on the case in which shots accepted by post-selection and a fault occurs in the circuit, we can separate the faults that occur into two categories: ones that are harmless i. e. commute with stabilizers, and harmful.
+Conditioning on the case in which shots accepted by post-selection and a fault occurs in the circuit, we can separate the faults that occur into two categories: ones that are harmless i.e. commute with stabilizers, and harmful.
 
 $$ F = \frac{P(no\ fault,\ acceptance) + P(harmless,\ is\ fault,\ acceptance)}{P(acceptance)}$$
 
 Varying the number of T-gates can therefore only influence the probability of a harmless fault occuring $P(harmless,\ is\ fault,\ acceptance)$. In particular, the separation between the doped and graph state fidelities can be upper bounded by the maximum probability of a harmless fault occurring:
 
-$$ | F*{doped} - F*{graph} | = | \frac{P*{doped}(harmless,\ is\ fault,\ acceptance) - P*{graph}(harmless,\ is\ fault,\ acceptance)}{P(acceptance)} | \leq \frac{max(P(harmless,\ is\ fault,\ acceptance))}{P(acceptance)}$$
+$$ | F_{doped} - F_{graph} | = | \frac{P_{doped}(harmless,\ is\ fault,\ acceptance) - P_{graph}(harmless,\ is\ fault,\ acceptance)}{P(acceptance)} | \leq \frac{max(P(harmless,\ is\ fault,\ acceptance))}{P(acceptance)}$$
 
 **TODO: Provide evidence that the max probability of harmless faults occuring is small!**
 
