@@ -44,7 +44,7 @@
         "path": "floquet_mixed_field_ising_mag_51qx16c.qasm",
         "qubits": 51,
         "rzz_gates": 896,
-        "floquet_cycle": 16,
+        "floquet_cycles": 16,
         "measured_observable": "magnetization"
       },
       {
@@ -52,7 +52,7 @@
         "path": "floquet_mixed_field_ising_zzd2_51qx16c.qasm",
         "qubits": 51,
         "rzz_gates": 896,
-        "floquet_cycle": 16,
+        "floquet_cycles": 16,
         "measured_observable": "ZZ_{d=2}"
       },
       {
@@ -60,7 +60,7 @@
         "path": "floquet_mixed_field_ising_zzd3_51qx16c.qasm",
         "qubits": 51,
         "rzz_gates": 896,
-        "floquet_cycle": 16,
+        "floquet_cycles": 16,
         "measured_observable": "ZZ_{d=3}"
       }
     ]
