@@ -62,9 +62,11 @@ of the $N$-qubit patch into three disjoint subsets.
 * Lattice
 
     The 51-qubit patch follows the IBM heavy-hex connectivity, with qubits indexed 0-50. The lattice is shown below; different edge colors correspond to the three edge layers $\mathcal{E}_1, \mathcal{E}_2, \mathcal{E}_3$ (see the table below).
+
  <img src="./figs/heavy_hex_lattice_51q.png" alt="lattice" style="clip-path: inset(0 0 0 0);" width="500"/>
 
 * Edge Layers 
+
     | Layer           | Edges                                                                                                                                                                   |
     |-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | $\mathcal{E}_1$ | [(0, 1),(3, 4),(5, 9),(10, 11),(6, 13),(16, 19),(20, 21),(17, 23),(24, 25),(18, 27),(28, 32),(33, 34),(29, 36),(37, 38),(39, 42),(43, 44),(40, 46),(47, 48),(41, 50)]   |
