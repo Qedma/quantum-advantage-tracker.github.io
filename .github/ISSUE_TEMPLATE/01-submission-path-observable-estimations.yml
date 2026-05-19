@@ -52,6 +52,9 @@ body:
         - operator_loschmidt_echo_49x1296
         - SU(2)Hadron-LSH-x_100_SCV
         - SU(2)Hadron-LSH-x_100_meson
+        - floquet_mixed_field_ising_mag_51qx16c
+        - floquet_mixed_field_ising_zzd2_51qx16c
+        - floquet_mixed_field_ising_zzd3_51qx16c
     validations:
       required: true
 
