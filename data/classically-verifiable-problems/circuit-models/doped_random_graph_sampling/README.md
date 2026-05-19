@@ -1,6 +1,6 @@
 # Circuit instance description (Doped Random Graph State Sampling):
 
-`nq70_depth70_checks27_doped.qasm`: This prepares a random graph state on a 70 X 70 circuit (70 qubits with CZ-depth 70). The 70 logical qubits are arranged on a 1D lattice (LNN) and 27 ancilla qubits are used for error detection. The circuit is doped with T gates, permitting a maximum of 468. The best known Schmidt rank is $2^{30}$ and the best known stabilizer rank is $2^{185.5}$. After post-selection, 0.038% of the shots remain, and the state fidelity is 0.26 $\pm$ 0.02 (bounded above 0.036 with 95% confidence).
+`nq70_depth70_checks27_doped.qasm`: This prepares a T-doped random graph state on a 70 X 70 circuit (70 qubits with CZ-depth 70). The 70 logical qubits are arranged on a 1D lattice (LNN) and 27 ancilla qubits are used for error detection. A maximmum of 468 nontrivial T gates can be placed throughout the circuit. The best known Schmidt rank is $2^{30}$ and the best known stabilizer rank is $2^{185.5}$. After post-selection, 0.038% of the shots remain, and the state fidelity is 0.26 $\pm$ 0.02 (bounded above 0.036 with 95% confidence).
 
 - `nq70_depth70_checks27_doped_checks.qasm`: This includes the ancillas and spacetime Pauli checks for the above circuit.
 
@@ -27,7 +27,7 @@ In random graph state sampling, both of these properties scale with the system s
 
 We quantify the entanglement of the graph state by estimating the Schmidt rank, the $GF(2)$ rank of its adjacency matrix, across random bipartitions. For an $N$-qubit graph state, the Schmidt rank is upper bounded by $2^{N/2}$. As this corresponds exactly to the bond dimension, the contraction cost of tensor network simulations will scale exponentially with this quantity.
 
-To maximize the entanglement in our graph state, we use an ansatz of repeating layers of odd/even CZ gates (brickwork layout), followed by random $\sqrt{X}$ or $S;\ \sqrt{X}$ rotations on each qubit. We do this until reaching a CZ-depth of $N$. It is known that this depth is enough to prepare _any_ graph state on an LNN architecture (to appear).
+To maximize the entanglement in our graph state, we use an ansatz of repeating layers of odd/even CZ gates (brickwork layout), followed by random $\sqrt{X}$ or $S;\ \sqrt{X}$ rotations on each qubit. We do this until the circuit reaches a CZ-depth of $N$. It is known that this depth is enough to prepare _any_ graph state on an LNN architecture (to appear).
 
 By taking the minimum over 100 million random bipartitions, we numerically verify that our circuit nearly saturates the entanglement upper bound with a Schmidt rank of $2^{30}$.
 
@@ -44,7 +44,7 @@ Note that we do not directly measure the entanglement for the doped random graph
 
 Alternatively, stabilizer rank algorithms can be used, which are oblivious to the amount of entanglement, but scale exponentially with the amount of magic (non-stabilizerness) in the circuit. These methods decompose quantum states into a sum of stabilizers which can be efficiently simulated.
 
-The complexity therefore scales with the minimum number of states used in this decomposition, i. e. the stabilizer rank\*. For circuits consisting only of Clifford and T gates, the [best known upper bound](https://arxiv.org/pdf/2106.07740v1) is given by
+The complexity therefore scales with the minimum number of states used in this decomposition, i. e. the stabilizer rank. For circuits consisting only of Clifford and T gates, the [best known upper bound](https://arxiv.org/pdf/2106.07740v1) is given by
 
 $$stabilizer\ rank \leq 2^{0.3963 \cdot (T\ count)}$$
 
@@ -59,11 +59,11 @@ So, as claimed, the nonstabilizerness increases exponentially with the system si
 
 </p>
 
-Furthermore, by doping on a square $N$ X $N$ circuit, non-Clifford gates can be placed across depth $N$ and a maximum of $O(N^2)$ instead of $O(N)$ magic resources are permissible - which further increases the complexity of extended stabilizer simulations.
+Furthermore, by doping on a square $N$ X $N$ circuit, non-Clifford gates can be placed across depth $N$, yielding a maximum of $O(N^2)$ (instead of $O(N)$) magic resources - which further increases the complexity of extended stabilizer simulations.
 
 We also make note of [Clifford Augmented Matrix Product State (CAMPS) simulators](https://arxiv.org/pdf/2412.17209), which combine tensor networks with Clifford tableau simulators. These algorithms reduce the bond dimension necessary to represent the state by propagating magic gates to the front of the circuit, using a tableau for the entangled Clifford bulk and a smaller bond dimension MPS for the magic layer. After the first $N$ magic gates however, the upper bound on the bond dimension necessary for the MPS increases exponentially, as well as the maximum bond dimension necessary to sample bitstring probabilities.
 
-To the best of our knowledge, then, the large Schmidt rank and stabilizer extent of our rotated graph states will be adversarial for exact or naïve approximate simulations.
+To the best of our knowledge, then, the large Schmidt rank and stabilizer extent of our T-doped graph states will be adversarial for exact or naïve approximate simulations.
 
 ## C. Verifiability
 
@@ -83,7 +83,7 @@ A key detail is that XEB requires classical simulations for the outcome probabil
 
 To avoid the problem of vanishing fidelities with large circuits, we use the [spacetime error detection protocol](https://arxiv.org/pdf/2504.15725) and mitigate noise in our samples. As the graph state is prepared with Clifford gates, it is possible to augment the circuit with ancilla qubits and insert spacetime Pauli checks on their support at various depths. While these Pauli checks collectively stabilize the circuit, errors will not generally commute with these checks, manifesting as a "syndrome" error on the ancillas. These errored shots can be detected and post-selected out which, as illustrated in the reference above, can result in order of magnitude improvements over bare state fidelity, all with a significantly lower sampling overhead than PEC.
 
-With these spacetime Pauli checks, T gates can not be arbitrarily placed, being restricted to locations in which they will simultaenously commute with all the stabilizers of the checks. In spite of this restriction, we find that a large number of T-gates remain available for reasonable circuit sizes.
+With these spacetime Pauli checks, T gates can not be arbitrarily placed, being restricted to locations in which they will simultaenously commute with all the stabilizers of the checks. In spite of this restriction, we find that a large number of T-gates remain available for the circuit sizes presented.
 
 Our circuits are mapped onto a one dimensional chain with ancillas attached to exactly one data qubit. On IBM's Heron devices, which have the heavy-hex architecture, it is likely that every other qubit will have degree 3. This dense placement of ancillas enables effective error detection, and guarantees that the number of ancillas can scale with the size of the circuit.
 
@@ -112,7 +112,7 @@ As in RGS, the equality between undoped and doped graph state fidelities require
 - On IBM's devices, Z rotations are [virtually implemented](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.96.022330) as framechanges, hence are noiseless.
 - We employ Pauli twirling, or randomized compiling, on the graph state preparation circuit. With the assumption of independent error on the single qubit gates, this is enough to ensure that the [fidelity of the doped random graph state](https://arxiv.org/pdf/2503.05943) is equal (up to first order) to the average graph state fidelity.
 
-We highlight a subtle point when doping our circuits: inserting T-gates into the circuit, even if done perfectly, can change the interference between coherent errors within the circuit. When implementing Pauli twirling then, we first separate the circuit into layers of Clifford $C_i$ and T-gate $T_i$ layers: $C_L...T_1C_1T_0C_0$. Twirling these Clifford layers (including the ancilla qubits) suppresses the buildup of coherent errors, ensuring that the angle of the T-layer gates does not affect the underlying noise.
+We highlight a subtle point when doping our circuits: inserting T gates into the circuit, even if done perfectly, can change the interference between coherent errors within the circuit. When implementing Pauli twirling then, we first separate the circuit into layers of Clifford $C_i$ and T gate $T_i$ layers: $C_L...T_1C_1T_0C_0$. Twirling these Clifford layers (including the ancilla qubits) suppresses the buildup of coherent errors, ensuring that the angle of the T-layer gates does not affect the underlying noise.
 
 To build confidence in this experimentally, we measure the state fidelity (or a proxy) in a few different regimes, aiming to demonstrate that this unaffected by the T-count:
 
@@ -122,7 +122,7 @@ To build confidence in this experimentally, we measure the state fidelity (or a 
 - Regime 3: $O(N)$ T gates, for which we use XEB as a proxy for fidelity.
   - After $O(N)$ T gates, the second moment converge closely to a Porter-Thomas distribution, making XEB a reasonable metric. The number of T gates is chosen such that classical simulations are still tractable.
 
-Provided that classical simulations fail to faithfully sample from our state, we can certify quantum advantage by showing that the fidelity of the rotated graph state is bounded above zero.
+Provided that classical simulations fail to faithfully sample from our state, we can certify quantum advantage by showing that the fidelity of the graph state - and consequently the T-doped graph state - is bounded above zero.
 
 <p align="center">
   <img width="753" height="530" alt="image" src="https://github.com/user-attachments/assets/267224d6-2bdb-4a31-8a54-6fcbeff619ac" />
@@ -130,11 +130,21 @@ Provided that classical simulations fail to faithfully sample from our state, we
   <em>Figure 4. Fidelity for the 70 X 70 circuit on IBM Boston at various T-counts. For T-count=0,5 we utilize direct fidelity estimation with 120 randomly drawn Paulis, and for T-count=70,80 we measure the linear cross entropy of the resultant samples. After rescaling for readout error, we note no negative trend in fidelity is observed as T-count increases. </em>
 </p>
 
-### `Verifiability with Post-Selection Rate`
+Addendum: In Fig. 4 the fidelties are rescaled by readout error. For points using direct fidelity estimation, the observables are rescaled according to [readout error mitigation](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.105.032620). For XEB, we assume that the probability distribution with readout error is uncorrelated with the ideal probability distribution, separate circuit fidelity $F$ into
+
+$$F = F_{ideal}F_{readout}$$
+
+where $F_{ideal}$ is the circuit fidelity with perfect readout error, and $F_{readout}$ is the fidelity of the readout (see supplementary by [Arute et. al](https://arxiv.org/pdf/1910.11333)). After readout error mitigation, each qubit should have symmetric 0 and 1 state error $p_i$, which yields
+
+$$F_{readout} = \Pi_{i=1}^{N} (1 - p_i)$$
+
+which can be used to rescaled the XEB scores.
+
+### `Verifiability with Logical Fault Rate`
 
 The spacetime Pauli checks, in addition to allowing for post-selection of errors and improvements in fidelity, can be used to characterize the rate of logical faults occurring in the circuit. We reason that the rate of logical faults corresponds to the fidelity of the circuit.
 
-For simplicity, consider the set of incoherent Pauli faults. T gates do not disturb the spacetime Pauli checks, implying that the set of logical faults that are either accepted/rejected during post-selection is identical in the undoped and doped cases, and are perfect, implying that the probability of a fault occuring is independent of the number of T gates.
+For simplicity, consider the set of incoherent Pauli faults. T gates do not disturb the spacetime Pauli checks, implying that the set of logical faults that are either accepted/rejected during post-selection is identical in the undoped and doped cases, and are perfect, implying that the probability of a fault occuring is independent of the T-count.
 
 <p align="center">
   <img width="1427" height="497" alt="image" src="https://github.com/user-attachments/assets/b7660919-32c2-48cb-aef2-965339be849b" />
@@ -142,13 +152,13 @@ For simplicity, consider the set of incoherent Pauli faults. T gates do not dist
   <em>Figure 5. Post-selection rate for the 70 X 70 circuit on IBM Boston shows no dependence on T-count across the measured values. </em>
 </p>
 
-Conditioning on the case in which shots accepted by post-selection and a fault occurs in the circuit, we can separate the faults that occur into two categories: ones that are harmless i.e. commute with stabilizers, and harmful.
+Conditioning on the case in which shots accepted by post-selection and a fault occurs in the circuit, we can separate the faults that occur into two categories: ones that are harmless i.e. commute with stabilizers, and harmful. The fidelity can be expressed in terms of these probabilities:
 
 $$ F = \frac{P(no\ fault,\ acceptance) + P(harmless,\ is\ fault,\ acceptance)}{P(acceptance)}$$
 
-Varying the number of T-gates can therefore only influence the probability of a harmless fault occuring $P(harmless,\ is\ fault,\ acceptance)$. In particular, the separation between the doped and graph state fidelities can be upper bounded by the maximum probability of a harmless fault occurring:
+Varying the number of T-gates can therefore only influence the probability of a harmless fault occuring $P(harmless,\ is\ fault,\ acceptance)$. In particular, the separation between the doped and graph state fidelities is upper bounded by the maximum probability of a harmless fault occurring:
 
-$$ | F_{doped} - F_{graph} | = | \frac{P_{doped}(harmless,\ is\ fault,\ acceptance) - P_{graph}(harmless,\ is\ fault,\ acceptance)}{P(acceptance)} | \leq \frac{max(P(harmless,\ is\ fault,\ acceptance))}{P(acceptance)}$$
+$$ | F*{doped} - F*{graph} | = | \frac{P*{doped}(harmless,\ is\ fault,\ acceptance) - P*{graph}(harmless,\ is\ fault,\ acceptance)}{P(acceptance)} | \leq \frac{max(P(harmless,\ is\ fault,\ acceptance))}{P(acceptance)}$$
 
 **TODO: Provide evidence that the max probability of harmless faults occuring is small!**
 

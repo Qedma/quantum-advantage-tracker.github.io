@@ -21,7 +21,7 @@ In random graph state sampling, both of these properties scale with the system s
 
 We quantify the entanglement of the graph state by estimating the Schmidt rank, the $GF(2)$ rank of its adjacency matrix, across random bipartitions. For an $N$-qubit graph state, the Schmidt rank is upper bounded by $2^{N/2}$. As this corresponds exactly to the bond dimension, the contraction cost of tensor network simulations will scale exponentially with this quantity.
 
-To maximize the entanglement in our graph state, we use an ansatz of repeating layers of odd/even CZ gates (brickwork layout), followed by random $\sqrt{X}$ or $S;\ \sqrt{X}$ rotations on each qubit. We do this until reaching a CZ-depth of $N$. It is known that this depth is enough to prepare _any_ graph state on an LNN architecture (to appear).
+To maximize the entanglement in our graph state, we use an ansatz of repeating layers of odd/even CZ gates (brickwork layout), followed by random $\sqrt{X}$ or $S;\ \sqrt{X}$ rotations on each qubit. We do this until the circuit reaches a CZ-depth of $N$. It is known that this depth is enough to prepare _any_ graph state on an LNN architecture (to appear).
 
 By taking the minimum over 100 million random bipartitions, we numerically verify that our circuit nearly saturates the entanglement upper bound with a Schmidt rank of $2^{30}$.
 
