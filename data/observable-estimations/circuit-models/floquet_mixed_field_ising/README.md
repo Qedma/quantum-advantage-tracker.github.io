@@ -17,7 +17,7 @@ This instance implements Floquet dynamics corresponding to the mixed-field Ising
 the average two-point correlator at graph distance $d=2$, defined as
 
 ```math
-ZZ_{d=2} = \frac{1}{N_{d=2}} \sum_{(i,j)\,:\,d(i,j)=2} Z_i Z_j
+ZZ_{d=2} = \frac{1}{N_{d=2}} \quad \sum_{(i,j)\,:\,d(i,j)=2} Z_i Z_j
 ```
 
 where $(i, j)$ ranges over all pairs of qubits at graph distance $d=2$ within the heavy-hex lattice (see pair list below), and $N_{d=2}$ is the total number of those pairs. 
@@ -28,7 +28,7 @@ This instance implements Floquet dynamics corresponding to the mixed-field Ising
 the average two-point correlator at graph distance $d=3$, defined as
 
 ```math
-ZZ_{d=3} = \frac{1}{N_{d=3}} \sum_{(i,j)\,:\,d(i,j)=3} Z_i Z_j
+ZZ_{d=3} = \frac{1}{N_{d=3}} \quad \sum_{(i,j)\,:\,d(i,j)=3} Z_i Z_j
 ```
 
 where $(i, j)$ ranges over all pairs of qubits at graph distance $d=3$ within the heavy-hex lattice (see pair list below), and $N_{d=3}$ is the total number of those pairs. 
