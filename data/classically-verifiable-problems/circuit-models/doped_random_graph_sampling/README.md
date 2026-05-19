@@ -130,7 +130,7 @@ Provided that classical simulations fail to faithfully sample from our state, we
   <em>Figure 4. Fidelity for the 70 X 70 circuit on IBM Boston at various T-counts. For T-count=0,5 we utilize direct fidelity estimation with 120 randomly drawn Paulis, and for T-count=70,80 we measure the linear cross entropy of the resultant samples. After rescaling for readout error, we note no negative trend in fidelity is observed as T-count increases. </em>
 </p>
 
-Addendum: In Fig. 4 the fidelties are rescaled by readout error. For points using direct fidelity estimation, the observables are rescaled according to [readout error mitigation](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.105.032620). For XEB, we assume that the probability distribution with readout error is uncorrelated with the ideal probability distribution, separate circuit fidelity $F$ into
+Addendum: In Fig. 4 the fidelities are rescaled by readout error. For points using direct fidelity estimation, the observables are rescaled according to [readout error mitigation](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.105.032620). For XEB, we assume that the probability distribution with readout error is uncorrelated with the ideal probability distribution, separate circuit fidelity $F$ into
 
 $$F = F_{ideal}F_{readout}$$
 
@@ -147,8 +147,8 @@ The spacetime Pauli checks, in addition to allowing for post-selection of errors
 For simplicity, consider the set of incoherent Pauli faults. T gates do not disturb the spacetime Pauli checks, implying that the set of logical faults that are either accepted/rejected during post-selection is identical in the undoped and doped cases, and are perfect, implying that the probability of a fault occuring is independent of the T-count.
 
 <p align="center">
-  <img width="1427" height="497" alt="image" src="https://github.com/user-attachments/assets/b7660919-32c2-48cb-aef2-965339be849b" />
-  
+  <img width="1011" height="511" alt="image" src="https://github.com/user-attachments/assets/90562100-1b92-4274-a100-8c4607ad7d0e" />
+
   <em>Figure 5. Post-selection rate for the 70 X 70 circuit on IBM Boston shows no dependence on T-count across the measured values. </em>
 </p>
 
@@ -158,7 +158,7 @@ $$ F = \frac{P(no\ fault,\ acceptance) + P(harmless,\ is\ fault,\ acceptance)}{P
 
 Varying the number of T-gates can therefore only influence the probability of a harmless fault occuring $P(harmless,\ is\ fault,\ acceptance)$. In particular, the separation between the doped and graph state fidelities is upper bounded by the maximum probability of a harmless fault occurring:
 
-$$ | F*{doped} - F*{graph} | = | \frac{P*{doped}(harmless,\ is\ fault,\ acceptance) - P*{graph}(harmless,\ is\ fault,\ acceptance)}{P(acceptance)} | \leq \frac{max(P(harmless,\ is\ fault,\ acceptance))}{P(acceptance)}$$
+$$ | F_{doped} - F_{graph} | = | \frac{P_{doped}(harmless,\ is\ fault,\ acceptance) - P_{graph}(harmless,\ is\ fault,\ acceptance)}{P(acceptance)} | \leq \frac{max(P(harmless,\ is\ fault,\ acceptance))}{P(acceptance)}$$
 
 **TODO: Provide evidence that the max probability of harmless faults occuring is small!**
 
