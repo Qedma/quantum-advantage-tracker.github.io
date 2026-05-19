@@ -33,14 +33,19 @@ The experiment explores non-equilibrium Floquet dynamics of the 2D mixed-field I
 In those circuits, the qubits are initialized in
 $$|\psi_0\rangle = |0\rangle^{\otimes N}$$
 and evolved over $N_c$ Floquet cycles to
+
 $$|\psi(N_c)\rangle = U_F^{N_c} |\psi_0\rangle.$$
-Each Floquet cycle $U_F$ consists of three layers:
-$$U_F = U_3\cdot U_2\cdot U_1,$$
-where each layer unitary first applies $RX$ gates to all qubits, 
-then $RZ$ gates to all qubits, and finally $RZZ$ gates on a disjoint 
-subset of edges $\mathcal{E}_m$:
-$$U_m = \prod_{(j,k)\in\mathcal{E}_m} RZZ(\theta_{zz}) \prod_{i} RZ\left(\tfrac{\theta_z}{3}\right) \prod_{i} RX\left(\tfrac{\theta_x}{3}\right).$$
-Here $\mathcal{E}_1, \mathcal{E}_2, \mathcal{E}_3$ is a partition of all edges of the $N$-qubit patch into three disjoint subsets.
+
+Each Floquet cycle $U_F = U_3 \cdot U_2 \cdot U_1$ consists of three layers, where:
+
+```math
+U_m = \prod_{(j,k)\in\mathcal{E}_m} RZZ(\theta_{zz}) 
+      \prod_{i} RZ\left(\tfrac{\theta_z}{3}\right) 
+      \prod_{i} RX\left(\tfrac{\theta_x}{3}\right)
+```
+
+Here $\mathcal{E}_1, \mathcal{E}_2, \mathcal{E}_3$ is a partition of all edges 
+of the $N$-qubit patch into three disjoint subsets.
 
 ## Additional Details
 
@@ -51,6 +56,7 @@ Here $\mathcal{E}_1, \mathcal{E}_2, \mathcal{E}_3$ is a partition of all edges o
     The 51-qubit patch follows the IBM heavy-hex connectivity, with qubits indexed 0-50. The lattice is shown below; different edge colors correspond to the three edge layers $\mathcal{E}_1, \mathcal{E}_2, \mathcal{E}_3$ (see the table below).
  <img src="./figs/heavy_hex_lattice_51q.png" alt="lattice" style="clip-path: inset(0 0 0 0);" width="500"/>
 
+* Edge Layers 
     | Layer           | Edges                                                                                                                                                                   |
     |-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | $\mathcal{E}_1$ | [(0, 1),(3, 4),(5, 9),(10, 11),(6, 13),(16, 19),(20, 21),(17, 23),(24, 25),(18, 27),(28, 32),(33, 34),(29, 36),(37, 38),(39, 42),(43, 44),(40, 46),(47, 48),(41, 50)]   |
