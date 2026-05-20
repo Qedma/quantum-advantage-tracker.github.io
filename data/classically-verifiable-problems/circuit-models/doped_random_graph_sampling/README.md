@@ -1,6 +1,6 @@
 # Circuit instance description (Doped Random Graph State Sampling):
 
-`nq70_depth70_checks27_doped.qasm`: This prepares a T-doped random graph state on a 70 X 70 circuit (70 qubits with CZ-depth 70). The 70 logical qubits are arranged on a 1D lattice (LNN) and 27 ancilla qubits are used for error detection. A maximmum of 468 nontrivial T gates can be placed throughout the circuit. The best known Schmidt rank is $2^{30}$ and the best known stabilizer rank is $2^{185.5}$. After post-selection, 0.038% of the shots remain, and the state fidelity is 0.26 $\pm$ 0.02 (bounded above 0.036 with 95% confidence).
+`nq70_depth70_checks27_doped.qasm`: This prepares a T-doped random graph state on a 70 X 70 circuit (70 qubits with CZ-depth 70). The 70 logical qubits are arranged on a 1D lattice (LNN) and 27 ancilla qubits are used for error detection. A maximum of 468 nontrivial T gates can be placed throughout the circuit. The best known Schmidt rank is $2^{30}$ and the best known stabilizer rank is $2^{185.5}$. After post-selection, 0.038% of the shots remain, and the state fidelity is 0.26 $\pm$ 0.02 (bounded above 0.036 with 95% confidence).
 
 - `nq70_depth70_checks27_doped_checks.qasm`: This includes the ancillas and spacetime Pauli checks for the above circuit.
 
@@ -32,13 +32,14 @@ To maximize the entanglement in our graph state, we use an ansatz of repeating l
 By taking the minimum over 100 million random bipartitions, we numerically verify that our circuit nearly saturates the entanglement upper bound with a Schmidt rank of $2^{30}$.
 
 <p align="center">
-  <img width="584" height="455" alt="image" src="https://github.com/user-attachments/assets/e24836a3-cce0-487d-90ed-cd145d8dd284" />
+  <img width="590" height="455" alt="image" src="https://github.com/user-attachments/assets/53d47789-5109-4678-995d-26dd1b5368dc" />
+
 
 <em>Figure 1. Quimb matrix product state (MPS) contraction times for the 70 X 70 circuit with increasing depth (maximum depth 24). Linear extrapolation from a logarithmic plot of the data (R<sup>2</sup> > 0.98) yields a predicted contraction time of 10<sup>25</sup> seconds.</em>
 
 </p>
 
-Note that we do not directly measure the entanglement for the doped random graph state. However, we conjecture that, as the T-gates can be modeled as random multiqubit Pauli rotations at the end of the circuit, these are unlikely to reduce the entanglement of the initial graph state.
+Note that we do not directly measure the entanglement for the doped random graph state. However, T gates can be modeled as random multi-qubit Pauli rotations when pulled to the end of the circuit, which are unlikely to disentangle the initial Clifford block.
 
 ### `Quantifying Non-stabilizerness`
 
@@ -100,7 +101,7 @@ As the graph states can be prepared with high fidelity with error detection, it 
 
 $$F \approx \frac{1}{M} \sum_k^M \frac{\braket{P_k}_{\rho}}{\braket{P_k}_{\sigma}} $$
 
-For stabilizer states, whose expectation values can be bounded, this requires only a constant shot overhead. Given the $O(1/M)$ scaling in uncertainty, we choose enough random stabilizers to bound the fidelity above 1% with 95% confidence.
+For stabilizer states, whose expectation values can be bounded, this requires only a constant shot overhead. Given the $O(1/\sqrt{M})$ scaling in uncertainty, we choose enough random stabilizers to bound the fidelity above 1% with 95% confidence.
 
 For non-stabilizer states, expectation values can become arbitrarily small, which requires a commensurately large shot overhead. We argue, however, that the fidelity of the graph state is equivalent to the doped random graph state.
 
@@ -110,7 +111,7 @@ As in RGS, the equality between undoped and doped graph state fidelities require
 
 - The undoped and doped states share the same gates, the only exception being the angle of Z rotations, which toggles between I and T gates.
 - On IBM's devices, Z rotations are [virtually implemented](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.96.022330) as framechanges, hence are noiseless.
-- We employ Pauli twirling, or randomized compiling, on the graph state preparation circuit. With the assumption of independent error on the single qubit gates, this is enough to ensure that the [fidelity of the doped random graph state](https://arxiv.org/pdf/2503.05943) is equal (up to first order) to the average graph state fidelity.
+- We employ Pauli twirling, or randomized compiling, on the graph state preparation circuit. With the assumption of independent error on the single qubit gates, this is enough to ensure that the [process fidelity](https://arxiv.org/pdf/2503.05943) of the doped graph state is equal (up to first order) to the average graph state process fidelity.
 
 We highlight a subtle point when doping our circuits: inserting T gates into the circuit, even if done perfectly, can change the interference between coherent errors within the circuit. When implementing Pauli twirling then, we first separate the circuit into layers of Clifford $C_i$ and T gate $T_i$ layers: $C_L...T_1C_1T_0C_0$. Twirling these Clifford layers (including the ancilla qubits) suppresses the buildup of coherent errors, ensuring that the angle of the T-layer gates does not affect the underlying noise.
 
@@ -120,12 +121,13 @@ To build confidence in this experimentally, we measure the state fidelity (or a 
 - Regime 2: Small constant number (<< $O(N)$) of T gates, for which we also use direct fidelity estimation.
   - In this regime, there is still relatively low overhead in measuring the fidelity. Classical simulations are done to sample random Pauli observables in an unbiased manner and calculate the corresponding expectation values.
 - Regime 3: $O(N)$ T gates, for which we use XEB as a proxy for fidelity.
-  - After $O(N)$ T gates, the second moment converge closely to a Porter-Thomas distribution, making XEB a reasonable metric. The number of T gates is chosen such that classical simulations are still tractable.
+  - After $O(N)$ T gates, the second moment converges closely to a Porter-Thomas distribution, making XEB a reasonable metric. The number of T gates is chosen such that classical simulations are still tractable.
 
 Provided that classical simulations fail to faithfully sample from our state, we can certify quantum advantage by showing that the fidelity of the graph state - and consequently the T-doped graph state - is bounded above zero.
 
 <p align="center">
-  <img width="753" height="530" alt="image" src="https://github.com/user-attachments/assets/267224d6-2bdb-4a31-8a54-6fcbeff619ac" />
+  <img width="752" height="530" alt="image" src="https://github.com/user-attachments/assets/b4d5a8bf-b659-4863-8cbd-2747ac1af9db" />
+
   
   <em>Figure 4. Fidelity for the 70 X 70 circuit on IBM Boston at various T-counts. For T-count=0,5 we utilize direct fidelity estimation with 120 randomly drawn Paulis, and for T-count=70,80 we measure the linear cross entropy of the resultant samples. After rescaling for readout error, we note no negative trend in fidelity is observed as T-count increases. </em>
 </p>
@@ -142,9 +144,17 @@ which can be used to rescaled the XEB scores.
 
 ### `Verifiability with Logical Fault Rate`
 
-The spacetime Pauli checks, in addition to allowing for post-selection of errors and improvements in fidelity, can be used to characterize the rate of logical faults occurring in the circuit. We reason that the rate of logical faults corresponds to the fidelity of the circuit.
+The spacetime Pauli checks, in addition to allowing for post-selection of errors and improvements in fidelity, can be used to characterize the rate of logical faults occurring in the circuit. We aim to relate this rate to the fidelity of the circuit and to bound the difference in fidelity between the undoped and doped graph states.
 
-For simplicity, consider the set of incoherent Pauli faults. T gates do not disturb the spacetime Pauli checks, implying that the set of logical faults that are either accepted/rejected during post-selection is identical in the undoped and doped cases, and are perfect, implying that the probability of a fault occuring is independent of the T-count.
+For simplicity, consider the stochastic Pauli fault model. Note that T gates do not disturb the spacetime Pauli checks, implying that the set of logical faults that can be accepted/rejected during post-selection is identical in the undoped and doped cases, and are perfect, implying that the probability of a fault occuring is independent of the T-count.
+
+For the set of accepted shots, faults can be separated into two categories: harmless if they commute with stabilizers, and harmful if they do not and result in a logical error. The fidelity $F$ can be expressed in terms of these probabilities:
+
+$$ F = P(id\ | accept) + P(harmless\ | accept) $$
+
+where $P(accept), P(id),\ P(harmless)$ respectively are the probabilities of acceptance, no fault occurring, and a harmless fault occurring.
+
+As stated above, T gates do not affect the set of accepted faults nor the probability of a fault occurring, hence $P(id\ | accept)$ is equal for the undoped and doped cases.
 
 <p align="center">
   <img width="1011" height="511" alt="image" src="https://github.com/user-attachments/assets/90562100-1b92-4274-a100-8c4607ad7d0e" />
@@ -152,17 +162,22 @@ For simplicity, consider the set of incoherent Pauli faults. T gates do not dist
   <em>Figure 5. Post-selection rate for the 70 X 70 circuit on IBM Boston shows no dependence on T-count across the measured values. </em>
 </p>
 
-Conditioning on the case in which shots accepted by post-selection and a fault occurs in the circuit, we can separate the faults that occur into two categories: ones that are harmless i.e. commute with stabilizers, and harmful. The fidelity can be expressed in terms of these probabilities:
+However T gates can affect that a harmless fault will occur, either by converting a previously harmful fault to a harmless one, or, in an adversarial case, converting a previously harmless fault to a harmful one. The difference in fidelity between the graph and doped graph states can therefore be upper bounded
 
-$$ F = \frac{P(no\ fault,\ acceptance) + P(harmless,\ is\ fault,\ acceptance)}{P(acceptance)}$$
+$$ F_{graph} - F_{doped} = P_{graph}(harmless\ | accept) - P_{doped}(harmless\ | accept) \leq max(P(harmless\ | accept))$$
 
-Varying the number of T-gates can therefore only influence the probability of a harmless fault occuring $P(harmless,\ is\ fault,\ acceptance)$. In particular, the separation between the doped and graph state fidelities is upper bounded by the maximum probability of a harmless fault occurring:
+by the maximum probability of a harmless fault occurring.
 
-$$ | F_{doped} - F_{graph} | = | \frac{P_{doped}(harmless,\ is\ fault,\ acceptance) - P_{graph}(harmless,\ is\ fault,\ acceptance)}{P(acceptance)} | \leq \frac{max(P(harmless,\ is\ fault,\ acceptance))}{P(acceptance)}$$
+We conjecture that the harmless faults should not occur often, a fact that we numerically verify below.
 
-**TODO: Provide evidence that the max probability of harmless faults occuring is small!**
+<p align="center">
+<img width="3680" height="1050" alt="image" src="https://github.com/user-attachments/assets/7d0666d7-6c3d-4245-b0e6-d5cf7686f670" />
 
-This only considers the incoherent Pauli error model, which is reasonable under twirling. There is ongoing work to extend this argument to coherent errors, which would eliminate the requirement of perfect Pauli twirling.
+<em>Figure 6. Stochastic Pauli fault simulations for the 70 X 70 circuit. The model includes global depolarizing noise, decoherence error (200 μs), and readout error. Left: The probability of acceptance decreases exponentially with error rate. Middle: For accepted shots, the probability of no fault occuring is exponentially suppressed with increasing noise, while the probability of harmless and harmful faults occurring increases. Right: Only a small systematic difference exists between the fidelities of the graph (Clifford) and doped graph states across all error rates.</em>
+
+</p>
+
+We note ongoing work to extend this argument to coherent errors, which would eliminate the requirement of perfect Pauli twirling.
 
 ## Institutions
 
