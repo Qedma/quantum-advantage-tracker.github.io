@@ -164,7 +164,7 @@ As stated above, T gates do not affect the set of accepted faults nor the probab
 
 However, T gates can affect that a harmless fault will occur, either by converting a previously harmful fault to a harmless one, or, in an adversarial case, converting a previously harmless fault to a harmful one. The difference in fidelity between the graph and doped graph states can therefore be upper bounded
 
-$$ F*{graph} - F*{doped} = P*{graph}(harmless\ | accept) - P*{doped}(harmless\ | accept) \leq max(P(harmless\ | accept))$$
+$$ F_{graph} - F_{doped} = P_{graph}(harmless\ | accept) - P_{doped}(harmless\ | accept) \leq max(P(harmless\ | accept))$$
 
 by the maximum probability of a harmless fault occurring.
 
