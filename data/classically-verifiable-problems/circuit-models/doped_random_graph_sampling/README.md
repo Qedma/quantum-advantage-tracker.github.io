@@ -34,7 +34,6 @@ By taking the minimum over 100 million random bipartitions, we numerically verif
 <p align="center">
   <img width="590" height="455" alt="image" src="https://github.com/user-attachments/assets/53d47789-5109-4678-995d-26dd1b5368dc" />
 
-
 <em>Figure 1. Quimb matrix product state (MPS) contraction times for the 70 X 70 circuit with increasing depth (maximum depth 24). Linear extrapolation from a logarithmic plot of the data (R<sup>2</sup> > 0.98) yields a predicted contraction time of 10<sup>25</sup> seconds.</em>
 
 </p>
@@ -128,8 +127,8 @@ Provided that classical simulations fail to faithfully sample from our state, we
 <p align="center">
   <img width="752" height="530" alt="image" src="https://github.com/user-attachments/assets/b4d5a8bf-b659-4863-8cbd-2747ac1af9db" />
 
-  
-  <em>Figure 4. Fidelity for the 70 X 70 circuit on IBM Boston at various T-counts. For T-count=0,5 we utilize direct fidelity estimation with 120 randomly drawn Paulis, and for T-count=70,80 we measure the linear cross entropy of the resultant samples. After rescaling for readout error, we note no negative trend in fidelity is observed as T-count increases. </em>
+<em>Figure 4. Fidelity for the 70 X 70 circuit on IBM Boston at various T-counts. For T-count=0,5 we utilize direct fidelity estimation with 120 randomly drawn Paulis, and for T-count=70,80 we measure the linear cross entropy of the resultant samples. After rescaling for readout error, we note no negative trend in fidelity is observed as T-count increases. </em>
+
 </p>
 
 Addendum: In Fig. 4 the fidelities are rescaled by readout error. For points using direct fidelity estimation, the observables are rescaled according to [readout error mitigation](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.105.032620). For XEB, we assume that the probability distribution with readout error is uncorrelated with the ideal probability distribution, separate circuit fidelity $F$ into
@@ -159,12 +158,13 @@ As stated above, T gates do not affect the set of accepted faults nor the probab
 <p align="center">
   <img width="1011" height="511" alt="image" src="https://github.com/user-attachments/assets/90562100-1b92-4274-a100-8c4607ad7d0e" />
 
-  <em>Figure 5. Post-selection rate for the 70 X 70 circuit on IBM Boston shows no dependence on T-count across the measured values. </em>
+<em>Figure 5. Post-selection rate for the 70 X 70 circuit on IBM Boston shows no dependence on T-count across the measured values. </em>
+
 </p>
 
-However T gates can affect that a harmless fault will occur, either by converting a previously harmful fault to a harmless one, or, in an adversarial case, converting a previously harmless fault to a harmful one. The difference in fidelity between the graph and doped graph states can therefore be upper bounded
+However, T gates can affect that a harmless fault will occur, either by converting a previously harmful fault to a harmless one, or, in an adversarial case, converting a previously harmless fault to a harmful one. The difference in fidelity between the graph and doped graph states can therefore be upper bounded
 
-$$ F_{graph} - F_{doped} = P_{graph}(harmless\ | accept) - P_{doped}(harmless\ | accept) \leq max(P(harmless\ | accept))$$
+$$ F*{graph} - F*{doped} = P*{graph}(harmless\ | accept) - P*{doped}(harmless\ | accept) \leq max(P(harmless\ | accept))$$
 
 by the maximum probability of a harmless fault occurring.
 
@@ -176,6 +176,8 @@ We conjecture that the harmless faults should not occur often, a fact that we nu
 <em>Figure 6. Stochastic Pauli fault simulations for the 70 X 70 circuit. The model includes global depolarizing noise, decoherence error (200 μs), and readout error. Left: The probability of acceptance decreases exponentially with error rate. Middle: For accepted shots, the probability of no fault occuring is exponentially suppressed with increasing noise, while the probability of harmless and harmful faults occurring increases. Right: Only a small systematic difference exists between the fidelities of the graph (Clifford) and doped graph states across all error rates.</em>
 
 </p>
+
+The graph state fidelity, then, is close to a lower bound for the doped graph state fidelity, which concludes our argument for verifiability.
 
 We note ongoing work to extend this argument to coherent errors, which would eliminate the requirement of perfect Pauli twirling.
 

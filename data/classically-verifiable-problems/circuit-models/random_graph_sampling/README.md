@@ -90,7 +90,7 @@ As the graph states can be prepared with high fidelity with error detection, it 
 
 $$F \approx \frac{1}{M} \sum_k^M \frac{\braket{P_k}_{\rho}}{\braket{P_k}_{\sigma}} $$
 
-For stabilizer states, whose expectation values can be bounded, this requires only a constant shot overhead. Given the $O(1/M)$ scaling in uncertainty, we choose enough random stabilizers to bound the fidelity above 1% with 95% confidence.
+For stabilizer states, whose expectation values can be bounded, this requires only a constant shot overhead. Given the $O(1/\sqrt{M})$ scaling in uncertainty, we choose enough random stabilizers to bound the fidelity above 1% with 95% confidence.
 
 <p align="center">
   <img width="1211" height="611" alt="image" src="https://github.com/user-attachments/assets/5efc5cf6-25c8-42ec-81d7-80417e059a06" />
