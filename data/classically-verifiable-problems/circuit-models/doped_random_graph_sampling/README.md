@@ -59,7 +59,7 @@ So, as claimed, the nonstabilizerness increases exponentially with the system si
 
 </p>
 
-Furthermore, by doping on a square $N$ X $N$ circuit, non-Clifford gates can be placed across depth $N$, yielding a maximum of $O(N^2)$ (instead of $O(N)$) magic resources - which further increases the complexity of extended stabilizer simulations.
+Furthermore, by doping on a square $N$ X $N$ circuit, non-Clifford gates can be placed across depth $N$, yielding a maximum of $O(N^2)$ (instead of O(N)) magic resources - which further increases the complexity of extended stabilizer simulations.
 
 We also make note of [Clifford Augmented Matrix Product State (CAMPS) simulators](https://arxiv.org/pdf/2412.17209), which combine tensor networks with Clifford tableau simulators. These algorithms reduce the bond dimension necessary to represent the state by propagating magic gates to the front of the circuit, using a tableau for the entangled Clifford bulk and a smaller bond dimension MPS for the magic layer. After the first $N$ magic gates however, the upper bound on the bond dimension necessary for the MPS increases exponentially, as well as the maximum bond dimension necessary to sample bitstring probabilities.
 
@@ -117,7 +117,7 @@ We highlight a subtle point when doping our circuits: inserting T gates into the
 To build confidence in this experimentally, we measure the state fidelity (or a proxy) in a few different regimes, aiming to demonstrate that this unaffected by the T-count:
 
 - Regime 1: Zero T gates, for which we use direct fidelity estimation.
-- Regime 2: Small constant number (<< $O(N)$) of T gates, for which we also use direct fidelity estimation.
+- Regime 2: Small constant number $(\ll O(N))$ of T gates, for which we also use direct fidelity estimation.
   - In this regime, there is still relatively low overhead in measuring the fidelity. Classical simulations are done to sample random Pauli observables in an unbiased manner and calculate the corresponding expectation values.
 - Regime 3: $O(N)$ T gates, for which we use XEB as a proxy for fidelity.
   - After $O(N)$ T gates, the second moment converges closely to a Porter-Thomas distribution, making XEB a reasonable metric. The number of T gates is chosen such that classical simulations are still tractable.
