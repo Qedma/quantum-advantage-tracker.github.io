@@ -1,5 +1,5 @@
 name: 📊 Path 1 - Observable estimations submission
-description: Submit a problem solution to the observable estimations tracker - Trust through rigorous error control
+description: Submit a problem solution to the observable estimations tracker
 labels: ['path: observable-estimations', 'submission']
 body:
   - type: markdown
@@ -9,8 +9,6 @@ body:
 
         Thank you for submitting a solution to the **observable estimations tracker**!
 
-        This pathway focuses on expectation-value experiments with mathematically grounded error bars. Your submission should demonstrate rigorous error control through techniques like QEC, QEM, or Post-Selected Error Detection.
-
         Please provide detailed information about your submission below.
 
   - type: input
@@ -18,21 +16,6 @@ body:
     attributes:
       label: Name
       description: Please provide a unique and identifiable name for your submission
-    validations:
-      required: true
-
-  - type: dropdown
-    id: category
-    attributes:
-      label: Category
-      description: |
-        - **Baseline Benchmarks**: These represent problems of interest, at scale, where the state-of-the-art is clearly classical, tracked for progress and calibration.
-        - **Active Candidates**: Problems that have met a higher bar of evidence suggesting quantum methods are credible contenders for advantage. To be clear, problems in this category are not necessarily provable examples of quantum advantage. These are merely problems where one may not yet have reliable classical benchmarks
-        - **Superseded Candidates**: Previously active candidates for which classical methods have caught up or exceeded the quantum approach.
-      options:
-        - Baseline
-        - Active
-        - Superseded
     validations:
       required: true
 
