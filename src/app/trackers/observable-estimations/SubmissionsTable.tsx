@@ -19,6 +19,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { TableEmptyIcon } from '@/icons';
 import type { CircuitModels } from '@/types/circuitModels';
 import type { OESubmission } from '@/types/submissions';
 import { flattenInstances, formatDate, getCircuitInstanceUrl, sortSubmissions } from '@/utils';
@@ -74,7 +75,7 @@ export function SubmissionsTable(props: {
   };
 
   return (
-    <div>
+    <div className="@container">
       <div className="flex flex-wrap items-center gap-4 pb-4">
         <Select
           value={modelFilter === 'all' ? '' : modelFilter}
@@ -236,7 +237,12 @@ export function SubmissionsTable(props: {
 function TableBodyEmpty() {
   return (
     <TableRow>
-      <TableCell colSpan={8}>There are no submissions yet.</TableCell>
+      <TableCell colSpan={9} className="content-center px-0 py-10 md:h-64">
+        <div className="sticky left-0 flex w-[100cqw] flex-col items-center gap-3">
+          <TableEmptyIcon />
+          <p>There are no submissions yet</p>
+        </div>
+      </TableCell>
     </TableRow>
   );
 }
