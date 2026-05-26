@@ -2,21 +2,21 @@ import submissionsCVP from '../../../data/classically-verifiable-problems/submis
 import submissionsOE from '../../../data/observable-estimations/submissions.json' with { type: 'json' };
 import submissionsVP from '../../../data/variational-problems/submissions.json' with { type: 'json' };
 
-const submissions = [...submissionsCVP, ...submissionsOE, ...submissionsVP];
-
-const institutionsSet = new Set<string>();
-
-submissions.forEach((submission) => {
-  if (submission.institutions) {
-    submission.institutions.split(',').forEach((institution) => {
-      institutionsSet.add(institution.trim());
-    });
+function getInstitutions() {
+  const extras: string[] = ['Moderna', 'Qedma'];
+  const submissions = [...submissionsCVP, ...submissionsOE, ...submissionsVP];
+  const set = new Set<string>(extras);
+  for (const submission of submissions) {
+    if (submission.institutions) {
+      for (const institution of submission.institutions.split(',')) {
+        set.add(institution.trim());
+      }
+    }
   }
-});
+  return [...set].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+}
 
-const institutions = Array.from(institutionsSet).sort((a, b) =>
-  a.toLowerCase().localeCompare(b.toLowerCase()),
-);
+const institutions = getInstitutions();
 
 export function Contributors() {
   return (
