@@ -124,7 +124,6 @@
     "notes": "This is a synthetic spin Hamiltonian, so energies are not actually in Eh"
   },
   {
-
     "createdAt": "2026-03-16T21:24:47Z",
     "url": "https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/145",
     "name": "ASCI solution of guided_sparse_ground_state_problem_49Q_v1",
