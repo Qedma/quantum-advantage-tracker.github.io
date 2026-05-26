@@ -16,8 +16,8 @@ export default async function TrackersVP() {
         <div className="flex flex-col gap-6 px-6 py-16 text-center">
           <h1 className="mx-auto max-w-xl text-3xl">Variational problems 🌀</h1>
           <h2 className="mx-auto max-w-xl">
-            Submissions must bound the ground-state energy from above. Verified entries include
-            evidence that the ansatz and optimization respect the variational principle.
+            Submissions must provide upper bounds on the ground-state energy. Verified entries
+            include evidence that the algorithm respects the variational principle.
           </h2>
 
           <div className="mx-auto flex flex-row flex-wrap justify-center gap-x-6 gap-y-3">

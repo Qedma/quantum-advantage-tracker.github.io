@@ -18,7 +18,7 @@ export default function TrackersLayout(props: LayoutProps<'/trackers'>) {
           <h3 className="text-4xl">Participate</h3>
           <p className="mx-auto max-w-xl">
             Have a quantum advantage candidate? Contribute it using the provided problem instances
-            or your own circuit specifications, and help expand the list of verified candidates.
+            or your own circuit specifications, and help expand the list of benchmark candidates.
           </p>
 
           <div>

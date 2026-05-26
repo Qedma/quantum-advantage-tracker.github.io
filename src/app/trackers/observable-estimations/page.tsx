@@ -17,8 +17,7 @@ export default async function TrackersOE() {
           <h1 className="mx-auto max-w-xl text-3xl">Observable estimations 📊</h1>
           <h2 className="mx-auto max-w-xl">
             Submissions in this tracker report expectation values for observables alongside rigorous
-            error bars. Validation requires mathematically provable confidence intervals over the
-            reported value.
+            error bars for validation.
           </h2>
 
           <div className="mx-auto flex flex-row flex-wrap justify-center gap-x-6 gap-y-3">
