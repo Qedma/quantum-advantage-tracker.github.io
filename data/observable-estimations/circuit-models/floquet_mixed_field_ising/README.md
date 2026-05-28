@@ -6,7 +6,11 @@
 
 This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=15$ Floquet cycles (see details below). The measured observable is
 the magnetization, defined as
-$$M = \frac{1}{N}\sum_{i} Z_i,$$
+
+```math
+M = \frac{1}{N}\sum_{i} Z_i,
+```
+
 where the sum runs over all the qubits of the heavy-hex lattice.
 
 
@@ -37,7 +41,11 @@ where $(i, j)$ ranges over all pairs of qubits at graph distance $d=3$ within th
 
 This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=16$ Floquet cycles (see details below). The measured observable is
 the average magnetization, defined as
-$$M = \frac{1}{N}\sum_{i} Z_i,$$
+
+```math
+M = \frac{1}{N}\sum_{i} Z_i,
+```
+
 where the sum runs over all the qubits of the heavy-hex lattice.
 
 `floquet_mixed_field_ising_zzd2_51qx16c`:
