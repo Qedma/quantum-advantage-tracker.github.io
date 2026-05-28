@@ -4,9 +4,8 @@
 
 `floquet_mixed_field_ising_mag_51qx15c`:
 
-This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=15$ Floquet cycles (see details below). The measured observable is
+This instance implements Floquet dynamics corresponding to the mixed-field Ising model on a heavy-hex lattice with $N=51$ qubits and $N_c=15$ Floquet cycles (see details below). The measured observable is
 the magnetization, defined as
-
 ```math
 M = \frac{1}{N}\sum_{i} Z_i,
 ```
@@ -16,9 +15,8 @@ where the sum runs over all the qubits of the heavy-hex lattice.
 
 `floquet_mixed_field_ising_zzd2_51qx15c`:
 
-This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=15$ Floquet cycles (see details below). The measured observable is
+This instance implements Floquet dynamics corresponding to the mixed-field Ising model on a heavy-hex lattice with $N=51$ qubits and $N_c=15$ Floquet cycles (see details below). The measured observable is
 the average two-point correlator at graph distance $d=2$, defined as
-
 ```math
 ZZ_{d=2} = \frac{1}{N_{d=2}} \; \sum_{(i,j)\,:\,d(i,j)=2} Z_i Z_j
 ```
@@ -27,9 +25,8 @@ where $(i, j)$ ranges over all pairs of qubits at graph distance $d=2$ within th
 
 `floquet_mixed_field_ising_zzd3_51qx15c`:
 
-This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=15$ Floquet cycles (see details below). The measured observable is
+This instance implements Floquet dynamics corresponding to the mixed-field Ising model on a heavy-hex lattice with $N=51$ qubits and $N_c=15$ Floquet cycles (see details below). The measured observable is
 the average two-point correlator at graph distance $d=3$, defined as
-
 ```math
 ZZ_{d=3} = \frac{1}{N_{d=3}} \; \sum_{(i,j)\,:\,d(i,j)=3} Z_i Z_j
 ```
@@ -39,9 +36,8 @@ where $(i, j)$ ranges over all pairs of qubits at graph distance $d=3$ within th
 
 `floquet_mixed_field_ising_mag_51qx16c`:
 
-This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=16$ Floquet cycles (see details below). The measured observable is
-the average magnetization, defined as
-
+This instance implements Floquet dynamics corresponding to the mixed-field Ising model on a heavy-hex lattice with $N=51$ qubits and $N_c=16$ Floquet cycles (see details below). The measured observable is
+the magnetization, defined as
 ```math
 M = \frac{1}{N}\sum_{i} Z_i,
 ```
@@ -50,9 +46,8 @@ where the sum runs over all the qubits of the heavy-hex lattice.
 
 `floquet_mixed_field_ising_zzd2_51qx16c`:
 
-This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=16$ Floquet cycles (see details below). The measured observable is
+This instance implements Floquet dynamics corresponding to the mixed-field Ising model on a heavy-hex lattice with $N=51$ qubits and $N_c=16$ Floquet cycles (see details below). The measured observable is
 the average two-point correlator at graph distance $d=2$, defined as
-
 ```math
 ZZ_{d=2} = \frac{1}{N_{d=2}} \; \sum_{(i,j)\,:\,d(i,j)=2} Z_i Z_j
 ```
@@ -61,9 +56,8 @@ where $(i, j)$ ranges over all pairs of qubits at graph distance $d=2$ within th
 
 `floquet_mixed_field_ising_zzd3_51qx16c`:
 
-This instance implements Floquet dynamics corresponding to the mixed-field Ising model on the heavy-hex lattice with $N=51$ qubits and $N_c=16$ Floquet cycles (see details below). The measured observable is
+This instance implements Floquet dynamics corresponding to the mixed-field Ising model on a heavy-hex lattice with $N=51$ qubits and $N_c=16$ Floquet cycles (see details below). The measured observable is
 the average two-point correlator at graph distance $d=3$, defined as
-
 ```math
 ZZ_{d=3} = \frac{1}{N_{d=3}} \; \sum_{(i,j)\,:\,d(i,j)=3} Z_i Z_j
 ```
