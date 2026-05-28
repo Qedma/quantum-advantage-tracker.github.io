@@ -39,6 +39,30 @@
   },
   "floquet_mixed_field_ising": {
     "instances": [
+       {
+        "id": "floquet_mixed_field_ising_mag_51qx15c",
+        "path": "floquet_mixed_field_ising_mag_51qx15c.qasm",
+        "qubits": 51,
+        "gates": 840,
+        "floquet_cycles": 15,
+        "measured_observable": "magnetization"
+      },
+      {
+        "id": "floquet_mixed_field_ising_zzd2_51qx15c",
+        "path": "floquet_mixed_field_ising_zzd2_51qx15c.qasm",
+        "qubits": 51,
+        "gates": 840,
+        "floquet_cycles": 15,
+        "measured_observable": "ZZ_{d=2}"
+      },
+      {
+        "id": "floquet_mixed_field_ising_zzd3_51qx15c",
+        "path": "floquet_mixed_field_ising_zzd3_51qx15c.qasm",
+        "qubits": 51,
+        "gates": 840,
+        "floquet_cycles": 15,
+        "measured_observable": "ZZ_{d=3}"
+      },
       {
         "id": "floquet_mixed_field_ising_mag_51qx16c",
         "path": "floquet_mixed_field_ising_mag_51qx16c.qasm",
