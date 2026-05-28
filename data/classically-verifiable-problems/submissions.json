@@ -54,7 +54,7 @@
     "value": "100%",
     "method": "TNS + BP on GPUs (extrapolated)",
     "institutions": "BlueQubit, University of Toronto, Vector Institute",
-    "runtimeClassical": 1E+14,
+    "runtimeClassical": 1e14,
     "computeResourcesClassical": "cluster of NVIDIA H100 GPUs",
     "notes": "Classical runtime is extrapolated."
   },
@@ -81,7 +81,7 @@
     "method": "TNS + BP (extrapolated)",
     "authors": "Nicholas E. Sherman",
     "institutions": "BlueQubit",
-    "runtimeClassical": 1E+7,
+    "runtimeClassical": 1e7,
     "computeResourcesClassical": "H100 GPU",
     "notes": "Classical runtime is extrapolated."
   },
@@ -108,5 +108,19 @@
     "institutions": "IBM",
     "runtimeClassical": 4059,
     "computeResourcesClassical": "Nvidia A100 80GB"
+  },
+  {
+    "createdAt": "2026-04-29T23:24:42Z",
+    "url": "https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/151",
+    "name": "ibm_boston_rgs_nq70_depth70_checks27_basis_fstate",
+    "circuit": "random_graph_sampling_nq70_depth70_checks27_basis_fstate",
+    "value": "0.37",
+    "method": "Quantum",
+    "authors": "Ali Javadi-Abhari, Simon Martiel, Jay-U Chung, Alireza Seif, Soumik Ghosh",
+    "institutions": "IBM, UChicago",
+    "runtimeQuantum": 1950,
+    "computeResourcesQuantum": "IBM Heron R3",
+    "computeResourcesClassical": "Intel Xeon Gold 6258R 28 cores with 1 TB memory (Qiskit Aer), Apple M1 Max 10 cores with 32 GB memory (Quimb)",
+    "notes": "The reported classical runtimes are extrapolated."
   }
 ]
